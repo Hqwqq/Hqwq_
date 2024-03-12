@@ -37,22 +37,22 @@ double getsin() {
 
 int main(int argc, char* argv[]) {
 	if (argc != 4) {
-		puts("Error0");			//命令行参数有误
+		puts("Error");			//命令行参数有误
 	}
 	FILE* f1, * f2, * f3;
 	f1 = fopen(argv[1], "r");
 	if (f1 == NULL) {
-		puts("Error1");			//找不到论文原文文件
+		puts("Error");			//找不到论文原文文件
 	}
 	f2 = fopen(argv[2], "r");
 	if (f2 == NULL) {
-		puts("Error2");			//找不到抄袭版论文文件 
+		puts("Error");			//找不到抄袭版论文文件 
 	}
 	f3 = fopen(argv[3], "w");
 	mpve(f1, mp1);				//将论文原文映射为向量存入mp1 
 	mpve(f2, mp2);				//将抄袭版论文映射为向量存入mp2 
 	double ans = getsin();		//获取余弦相似度 
-	fprintf(f3, "%.2lf%", ans * 100);
+	fprintf(f3, "%.2lf%%", ans * 100);
 	fclose(f1);
 	fclose(f2);
 	fclose(f3);
